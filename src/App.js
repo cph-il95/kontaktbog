@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Modal.css';
 import { Contact } from './entities/Contact';
 import { useState } from 'react';
+import ContactItem from './components/ContactItem';
 
 
 function App() {
@@ -25,8 +26,8 @@ function App() {
       </header>
       <ContactCreateModal className="Example" setContacts={setContacts} contacts={contacts}/>
 
-      {contacts.map( (contact) => {
-          return <div>{contact.firstname}</div>
+      {contacts.map( (x) => {
+          return <ContactItem contact={x} />
         }
         )}
     </div>
