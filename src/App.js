@@ -26,7 +26,7 @@ function App() {
       </header>
       <ContactCreateModal className="Example" setContacts={setContacts} contacts={contacts}/>
 
-      {contacts.map( (x) => {
+      {contacts.slice().reverse().map( (x) => {
           return <ContactItem contact={x} />
         }
         )}
