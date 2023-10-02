@@ -15,6 +15,9 @@ function ContactCreateModal({setContacts, contacts}) {
   const [phone,setPhone] = useState ("");
   const [company,setCompany] = useState ("");
   const [position, setPosition] = useState ("");
+  const [touchedFirstname, setTouchedFirstname] = useState(false);
+  const [touchedLastname, setTouchedLastname] = useState(false);
+  const [touchedEmail, setTouchedEmail] = useState(false);
 
 //   denne styrer name input feltet
   const handleFirstnameChange = (e) => {
@@ -57,6 +60,11 @@ function ContactCreateModal({setContacts, contacts}) {
     setContacts([...contacts, newContact]);
   }
 
+  let isValidFirstname = firstname.trim() !== '';
+  let isValidLastname = lastname.trim() !== '';
+  let isValidEmail = email.trim() !== '';
+
+  console.log(isValidFirstname);
 
   return (
     <>
@@ -77,7 +85,13 @@ function ContactCreateModal({setContacts, contacts}) {
                 autoFocus
                 value={firstname}
                 onChange={handleFirstnameChange}
+                onBlur={() => setTouchedFirstname(true)}
               /></Form.Group>
+              { !isValidFirstname && touchedFirstname &&
+              <div>
+                Please fill out the input.
+              </div>
+              }
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Lastname</Form.Label>
@@ -87,7 +101,13 @@ function ContactCreateModal({setContacts, contacts}) {
                 autoFocus
                 value={lastname}
                 onChange={handleLastNameChange}
+                onBlur={() => setTouchedLastname(true)}
               /></Form.Group>
+              { !isValidLastname && touchedLastname &&
+                <div>
+                  Please fill out the input.
+                </div>
+              }
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
@@ -97,7 +117,14 @@ function ContactCreateModal({setContacts, contacts}) {
                 autoFocus
                 value={email}
                 onChange={handleEmailChange}
+                onBlur={() => setTouchedEmail(true)}
               /></Form.Group>
+              { !isValidEmail && touchedEmail &&
+                <div>
+                  Please fill out the input.
+                </div>
+              }
+             
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput0">
               <Form.Label>Phone</Form.Label>

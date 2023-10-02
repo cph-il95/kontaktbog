@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import ContactCreateModal from './components/ContactCreateModal';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Modal.css';
+import './css/contactcreatemodal.css';
 import { Contact } from './entities/Contact';
 import { useState } from 'react';
 import ContactItem from './components/ContactItem';
@@ -10,9 +10,9 @@ import ContactItem from './components/ContactItem';
 
 function App() {
   const contactsDummyData = [
-    new Contact('Ida', 'Ligaard', 'blabla', '12345678', 'CphBusiness', 'Student'),
-    new Contact('Ida2', 'Ligaard', 'blabla', '12345678', 'CphBusiness', 'Student'),
-    new Contact('Ida3', 'Ligaard', 'blabla', '12345678', 'CphBusiness', 'Student'),
+    new Contact('Ida', 'Ligaard', 'idaligaard@gmail.com', '12345678', 'CphBusiness', 'Student'),
+    new Contact('Oskar', 'Eriksen', 'oskareriksen@gmail.com', '12345678', 'CphBusiness', 'Student'),
+    new Contact('Emilie', 'Midtgaard', 'Emiliemidtgaard@gmail.com', '12345678', 'CphBusiness', 'Student'),
     
   ]
 
