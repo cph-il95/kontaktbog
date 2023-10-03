@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import NewContactForm from './NewContactForm';
 import Form from 'react-bootstrap/Form';
 import { Contact } from '../entities/Contact';
+
 
 function ContactCreateModal({setContacts, contacts}) {
   const [show, setShow] = useState(false);
@@ -18,6 +18,9 @@ function ContactCreateModal({setContacts, contacts}) {
   const [touchedFirstname, setTouchedFirstname] = useState(false);
   const [touchedLastname, setTouchedLastname] = useState(false);
   const [touchedEmail, setTouchedEmail] = useState(false);
+  const [touchedPhone, setTouchedPhone] = useState(false);
+  const [touchedCompany, setTouchedCompany] = useState(false);
+  const [touchedPosition, setTouchedPosition] = useState(false);
 
 //   denne styrer name input feltet
   const handleFirstnameChange = (e) => {
@@ -63,14 +66,23 @@ function ContactCreateModal({setContacts, contacts}) {
   let isValidFirstname = firstname.trim() !== '';
   let isValidLastname = lastname.trim() !== '';
   let isValidEmail = email.trim() !== '';
+  let isValidPhone = phone.trim() !== '';
+  let isValidCompany = company.trim() !== '';
+  let isValidPosition = position.trim() !== '';
 
   console.log(isValidFirstname);
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+    <div className='createmodal-container'> 
+
+      <div className='open-add-btn'>
+        <h4>Add new contacts here</h4>
+        <Button className='opencontactmodal' variant="info" onClick={handleShow}>
         Add new contact
       </Button>
+      </div>
+      
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -81,31 +93,31 @@ function ContactCreateModal({setContacts, contacts}) {
               <Form.Label>Firstname</Form.Label>
               <Form.Control
                 type="firstname"
-                placeholder="Jane"
+                placeholder="Type your firstname here"
                 autoFocus
                 value={firstname}
                 onChange={handleFirstnameChange}
-                onBlur={() => setTouchedFirstname(true)}
-              /></Form.Group>
-              { !isValidFirstname && touchedFirstname &&
-              <div>
-                Please fill out the input.
-              </div>
-              }
+                onBlur={() => setTouchedFirstname(true)}/>
+              </Form.Group>
+              { !isValidFirstname && touchedFirstname && firstname.trim() === '' && (
+                <div className='error-message'>
+                  Please fill out your firstname.
+                </div>
+              )}
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Lastname</Form.Label>
               <Form.Control
                 type="lastname"
-                placeholder="Doe"
+                placeholder="Type your lastname here"
                 autoFocus
                 value={lastname}
                 onChange={handleLastNameChange}
-                onBlur={() => setTouchedLastname(true)}
-              /></Form.Group>
+                onBlur={() => setTouchedLastname(true)}/>
+              </Form.Group>
               { !isValidLastname && touchedLastname &&
-                <div>
-                  Please fill out the input.
+                <div className='error-message'>
+                  Please fill out your lastname.
                 </div>
               }
 
@@ -113,15 +125,15 @@ function ContactCreateModal({setContacts, contacts}) {
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="JaneDoe@example.com"
+                placeholder="Type your email here"
                 autoFocus
                 value={email}
                 onChange={handleEmailChange}
                 onBlur={() => setTouchedEmail(true)}
               /></Form.Group>
               { !isValidEmail && touchedEmail &&
-                <div>
-                  Please fill out the input.
+                <div className='error-message'>
+                  Please fill out your email.
                 </div>
               }
              
@@ -130,42 +142,64 @@ function ContactCreateModal({setContacts, contacts}) {
               <Form.Label>Phone</Form.Label>
               <Form.Control
                 type="phone"
-                placeholder="45 45 45 45"
+                placeholder="Type your phone number here"
                 autoFocus
                 value={phone}
                 onChange={handlePhoneChange}
-              /></Form.Group>
+                onBlur={() => setTouchedPhone(true)}/>
+                </Form.Group>
+                {!isValidPhone && touchedPhone &&
+                  <div className='error-message'>
+                    Please fill out your phone number.
+                  </div>
+                
+                }
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput0">
               <Form.Label>Company</Form.Label>
               <Form.Control
                 type="company"
-                placeholder="Netto"
+                placeholder="Type your compant name here"
                 autoFocus
                 value={company}
                 onChange={handleCompanyChange}
-              /></Form.Group>
+                onBlur={() => setTouchedCompany(true)}/>
+              </Form.Group>
+              { !isValidCompany && touchedCompany &&
+                <div className='error-message'>
+                  Please fill out your company.
+                </div>
+              }
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput0">
               <Form.Label>Position</Form.Label>
               <Form.Control
                 type="position"
-                placeholder="CEO"
+                placeholder="Type your position here"
                 autoFocus
                 value={position}
                 onChange={handlePositionChange}
-              /></Form.Group>
+                onBlur={() => setTouchedPosition(true)}/>
+              </Form.Group>
+              { !isValidPosition && touchedPosition &&
+                <div className='error-message'>
+                  Please fill out your lastname.
+                </div>
+              }
+
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className='cancel-btn' variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleAddContact}>
+          <Button className='save-btn' variant="primary" onClick={handleAddContact}>
             Add contact
           </Button>
         </Modal.Footer>
       </Modal>
+   
+    </div>
     </>
   );
 }

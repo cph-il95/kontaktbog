@@ -1,0 +1,37 @@
+.each-contact-info {
+    width: 75%;
+    align-self: center;
+    background-color: beige;
+    margin: 20px 10px;
+    border: 1px solid rgb(210, 210, 185);
+    border-radius: 30px;
+}
+.names-contact{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   
+    
+}
+.names-contact p, .phone-contact p, .email-contact p, .company-contact p, .position-contact p{
+    font-weight: 300;
+}
+
+
+.firstname-p {
+    padding: 5px;
+}
+.lastname-p {
+    padding: 5px;
+}
+.email-contact, .company-contact{
+    border-top: 1px solid rgb(210, 210, 185);
+    border-bottom: 1px solid rgb(210, 210, 185);
+}
+.cancel-btn{
+    background-color: grey;
+}
+.save-btn{
+    background-color: burlywood;
+    border-color: rgb(188, 155, 113);
+}

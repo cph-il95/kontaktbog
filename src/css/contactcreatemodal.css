@@ -3,3 +3,27 @@
     top: 100px;
     left: 100px;
 }
+
+.createmodal-container {
+    text-align: center;
+    width: 25%;
+}
+
+.open-add-btn{
+    background-color: beige;
+    padding: 20px;
+    border-radius: 30px;
+    border: 1px solid rgb(210, 210, 185);
+    margin-top: 70px;
+    position: absolute;
+    margin-left: 5%;
+}
+.opencontactmodal{
+    margin-top: 50px;
+    background-color: burlywood;
+    border-color: rgb(188, 155, 113);
+}
+.opencontactmodal:hover{
+    background-color: rgb(188, 155, 113);
+    border-color: rgb(188, 155, 113);
+}
