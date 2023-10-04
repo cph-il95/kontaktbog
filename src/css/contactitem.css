@@ -28,10 +28,4 @@
     border-top: 1px solid rgb(210, 210, 185);
     border-bottom: 1px solid rgb(210, 210, 185);
 }
-.cancel-btn{
-    background-color: grey;
-}
-.save-btn{
-    background-color: burlywood;
-    border-color: rgb(188, 155, 113);
-}
+
