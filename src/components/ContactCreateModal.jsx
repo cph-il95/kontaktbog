@@ -7,8 +7,25 @@ import { Contact } from '../entities/Contact';
 
 function ContactCreateModal({setContacts, contacts}) {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  
+  function handleClose() {
+    setShow(false);
+    setFirstname("")
+    setTouchedFirstname(false)
+    setLastname("")
+    setTouchedLastname(false)
+    setEmail("")
+    setTouchedEmail(false)
+    setPhone("")
+    setTouchedPhone(false)
+    setCompany("")
+    setTouchedCompany(false)
+    setPosition("")
+    setTouchedPosition(false)
+  } 
+
   const handleShow = () => setShow(true);
+
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState ("");
   const [email, setEmail] = useState ("");
@@ -61,6 +78,7 @@ function ContactCreateModal({setContacts, contacts}) {
   const handleAddContact = () => {
     const newContact = new Contact(firstname, lastname, email, phone, company, position);
     setContacts([...contacts, newContact]);
+    handleClose()
   }
 
   let isValidFirstname = firstname.trim() !== '';
@@ -70,8 +88,8 @@ function ContactCreateModal({setContacts, contacts}) {
   let isValidCompany = company.trim() !== '';
   let isValidPosition = position.trim() !== '';
 
-  console.log(isValidFirstname);
-
+  console.log("first name", isValidFirstname);
+  console.log("touched", touchedEmail)
   return (
     <>
     <div className='createmodal-container'> 
@@ -94,7 +112,6 @@ function ContactCreateModal({setContacts, contacts}) {
               <Form.Control
                 type="firstname"
                 placeholder="Type your firstname here"
-                autoFocus
                 value={firstname}
                 onChange={handleFirstnameChange}
                 onBlur={() => setTouchedFirstname(true)}/>
@@ -110,7 +127,6 @@ function ContactCreateModal({setContacts, contacts}) {
               <Form.Control
                 type="lastname"
                 placeholder="Type your lastname here"
-                autoFocus
                 value={lastname}
                 onChange={handleLastNameChange}
                 onBlur={() => setTouchedLastname(true)}/>
@@ -126,7 +142,6 @@ function ContactCreateModal({setContacts, contacts}) {
               <Form.Control
                 type="email"
                 placeholder="Type your email here"
-                autoFocus
                 value={email}
                 onChange={handleEmailChange}
                 onBlur={() => setTouchedEmail(true)}
@@ -143,7 +158,6 @@ function ContactCreateModal({setContacts, contacts}) {
               <Form.Control
                 type="phone"
                 placeholder="Type your phone number here"
-                autoFocus
                 value={phone}
                 onChange={handlePhoneChange}
                 onBlur={() => setTouchedPhone(true)}/>
@@ -160,7 +174,6 @@ function ContactCreateModal({setContacts, contacts}) {
               <Form.Control
                 type="company"
                 placeholder="Type your compant name here"
-                autoFocus
                 value={company}
                 onChange={handleCompanyChange}
                 onBlur={() => setTouchedCompany(true)}/>
@@ -176,7 +189,6 @@ function ContactCreateModal({setContacts, contacts}) {
               <Form.Control
                 type="position"
                 placeholder="Type your position here"
-                autoFocus
                 value={position}
                 onChange={handlePositionChange}
                 onBlur={() => setTouchedPosition(true)}/>
@@ -198,7 +210,6 @@ function ContactCreateModal({setContacts, contacts}) {
           </Button>
         </Modal.Footer>
       </Modal>
-   
     </div>
     </>
   );
