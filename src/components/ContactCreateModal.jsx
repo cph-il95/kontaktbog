@@ -205,7 +205,22 @@ function ContactCreateModal({setContacts, contacts}) {
           <Button className='cancel-btn' variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button className='save-btn' variant="primary" onClick={handleAddContact}>
+          <Button className='save-btn' variant="primary" onClick={handleAddContact}
+          disabled={
+            !touchedFirstname ||
+            !touchedLastname ||
+            !touchedEmail ||
+            !touchedPhone ||
+            !touchedCompany ||
+            !touchedPosition ||
+            !isValidFirstname ||
+            !isValidLastname ||
+            !isValidEmail ||
+            !isValidPhone ||
+            !isValidCompany ||
+            !isValidPosition
+          }
+          >
             Add contact
           </Button>
         </Modal.Footer>

@@ -38,3 +38,6 @@
     background-color: rgb(188, 155, 113);
     border-color: rgb(188, 155, 113);
 }
+.save-btn:disabled{
+    background-color: rgb(107, 100, 89);;
+}
