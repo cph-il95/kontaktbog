@@ -212,7 +212,7 @@ function ContactCreateModal({setContacts, contacts}) {
             !touchedEmail ||
             !touchedPhone ||
             !touchedCompany ||
-            !touchedPosition ||
+            // !touchedPosition ||
             !isValidFirstname ||
             !isValidLastname ||
             !isValidEmail ||
