@@ -27,6 +27,9 @@
     background-color: rgb(188, 155, 113);
     border-color: rgb(188, 155, 113);
 }
+.opencontactmodal:active{
+    background-color: burlywood;
+}
 .cancel-btn{
     background-color: grey;
 }
@@ -40,4 +43,7 @@
 }
 .save-btn:disabled{
     background-color: rgb(107, 100, 89);;
+}
+.error-message{
+    color: red;
 }

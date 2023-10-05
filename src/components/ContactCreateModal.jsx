@@ -22,7 +22,7 @@ function ContactCreateModal({setContacts, contacts}) {
     setTouchedCompany(false)
     setPosition("")
     setTouchedPosition(false)
-  } 
+  }
 
   const handleShow = () => setShow(true);
 

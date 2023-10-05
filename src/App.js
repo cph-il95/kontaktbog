@@ -15,7 +15,6 @@ function App() {
     new Contact('Ida', 'Ligaard', 'idaligaard@gmail.com', '12345678', 'CphBusiness', 'Student'),
     new Contact('Oskar', 'Eriksen', 'oskareriksen@gmail.com', '12345678', 'CphBusiness', 'Student'),
     new Contact('Emilie', 'Midtgaard', 'emiliemidtgaard@gmail.com', '12345678', 'CphBusiness', 'Student'),
-    
   ]
 
   const [contacts, setContacts] = useState(contactsDummyData);
