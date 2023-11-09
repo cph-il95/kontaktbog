@@ -24,6 +24,26 @@ function ContactCreateModal({setContacts, contacts}) {
     setTouchedPosition(false)
   }
 
+  const postContacts = async (newContact) => {
+    const tableName = "contacts";
+    const projectUrl = "https://axrihmeitcmfnuatmbzv.supabase.co"
+    const data = await fetch(projectUrl + '/rest/v1/' + tableName, {
+      method: "POST",
+      body: JSON.stringify(newContact),
+      headers: {
+        apiKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF4cmlobWVpdGNtZm51YXRtYnp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTkyODAxOTgsImV4cCI6MjAxNDg1NjE5OH0.L795Cg1fuCwz7k4qQ8ogUSWMH3Tp8NDnvce7ZTTLqSQ',
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      }
+    }).then(result => result.json())
+    .then(createdContacts => {
+      const contactsFromSupabase = createdContacts[0];
+      setContacts([...contacts, contactsFromSupabase]);
+  
+      console.log(createdContacts);
+    })
+  }
+
   const handleShow = () => setShow(true);
 
   const [firstname, setFirstname] = useState("");
@@ -78,6 +98,9 @@ function ContactCreateModal({setContacts, contacts}) {
   const handleAddContact = () => {
     const newContact = new Contact(firstname, lastname, email, phone, company, position);
     setContacts([...contacts, newContact]);
+
+    postContacts(newContact)
+
     handleClose()
   }
 
